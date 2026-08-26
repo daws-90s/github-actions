@@ -3,9 +3,9 @@ name: conditions
 on: 
   push:
 concurrency:
-  group: ${{ github.workflow }}-${{ github.ref }}
+  group: ${{ github.workflow }}-${{ github.ref }} # conditions-main
   cancel-in-progress: false # we can trigger workflow multiple times, upcoming workflows should wait
-  
+
 jobs: # stages
   my-job: # stage
     runs-on: ubuntu-latest # agent, ubuntu-latest is github hosted runner
