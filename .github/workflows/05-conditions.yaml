@@ -12,7 +12,7 @@ jobs: # stages
     steps:
       - name: main branch
         if: github.ref_name == 'main' 
-        run:  |
+        run:  | 
           sleep 15
           echo "this is executed when main branch updated"
 
