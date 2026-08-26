@@ -2,6 +2,10 @@ name: conditions
 # triggers
 on: 
   push:
+concurrency:
+  group: ${{ github.workflow }}-${{ github.ref }}
+  cancel-in-progress: false # we can trigger workflow multiple times, upcoming workflows should wait
+  
 jobs: # stages
   my-job: # stage
     runs-on: ubuntu-latest # agent, ubuntu-latest is github hosted runner
@@ -12,4 +16,6 @@ jobs: # stages
 
       - name: feature branch
         if: github.ref_name != 'main' 
-        run: echo "this is executed when feature branch updated"
+        run: |
+          sleep 10
+          echo "this is executed when feature branch updated"
