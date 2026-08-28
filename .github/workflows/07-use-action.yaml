@@ -10,3 +10,7 @@ jobs:
         uses: daws-90s/workflows/.github/actions/gm@main
         with:
           person: "Ramesh"
+      
+      - name: get the output
+        run: |
+          echo "{{ steps.good-morning.outputs.greeting-status }}"
